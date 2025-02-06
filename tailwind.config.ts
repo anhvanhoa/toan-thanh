@@ -19,9 +19,9 @@ export default {
                 badScript: 'var(--font-bad-script)'
             },
             animation: {
-                'slide-down': 'slide-down 1.5s ease-out 0.5s forwards',
-                'slide-right-to-left': 'slide-right-to-left 1.5s ease-out 0.5s forwards',
-                'blur-to-clear': 'blur-to-clear 1s ease-out forwards'
+                'slide-down': 'slide-down 1.8s ease-out 0.5s forwards',
+                'slide-right-to-left': 'slide-right-to-left 1.8s ease-out 0.5s forwards',
+                'blur-to-clear': 'blur-to-clear 1.5s ease-out forwards'
             },
             keyframes: {
                 ping: {
@@ -70,11 +70,11 @@ export default {
                 },
                 'blur-to-clear': {
                     '0%': {
-                        backdropFilter: 'blur(12px)',
+                        backdropFilter: 'blur(40px)',
                         opacity: '1'
                     },
                     '100%': {
-                        backdropFilter: 'blur(2)',
+                        backdropFilter: 'blur(0)',
                         opacity: '0',
                         visibility: 'hidden',
                         pointerEvents: 'none'

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Intro from './intro';
+import Form from './form';
 
 const data = {
     intro: {
@@ -105,16 +106,20 @@ const data = {
 type Props = {
     searchParams: Promise<{
         key: 'toan' | 'thanh';
+        ten: string;
     }>;
 };
 
 export default async function Home({ searchParams }: Props) {
     let keyWeddingInvitation: 'groom' | 'bride' = 'groom';
-    const { key = 'toan' } = await searchParams;
+    const { key = 'toan', ten = 'Nguyễn Văn Ánh' } = await searchParams;
     if (key === 'toan') keyWeddingInvitation = 'groom';
     if (key === 'thanh') keyWeddingInvitation = 'bride';
     return (
         <div>
+            <div className='bg-indigo-600 py-1'>
+                <p className='text-white text-center text-sm'>🎉 Trân trọng mời {ten} tham dự lễ vu quy 🎉</p>
+            </div>
             <Intro data={data.intro} />
             <div>
                 <h3 className='uppercase text-2xl font-light text-center py-12 text-gray-500'>Giới thiệu</h3>
@@ -136,9 +141,9 @@ export default async function Home({ searchParams }: Props) {
                     ))}
                 </div>
             </div>
-            <div className='border-y border-gray-300 mt-14'>
+            <div id='thiep-cuoi' className='border-y border-gray-300 mt-14'>
                 <div className='space-y-8'>
-                    <div className='w-full aspect-[4/6] bg-cover bg-[url(/imgs/bg.jpg)] flex items-center justify-center flex-col gap-y-4 px-16'>
+                    <div className='*:text-black w-full aspect-[4/6] bg-cover bg-[url(/imgs/bg.jpg)] flex items-center justify-center flex-col gap-y-2 px-16'>
                         <Image
                             width={160}
                             height={160}
@@ -148,6 +153,9 @@ export default async function Home({ searchParams }: Props) {
                         />
                         <p className='font-light text-lg uppercase font-great'>
                             {data.weddingInvitation[keyWeddingInvitation].title}
+                        </p>
+                        <p className='text-center px-2 font-meow text-xl'>
+                            Trân trọng kính mời {ten} đến dự tiệc thâm mật cùng gia đình chúng tôi !
                         </p>
                         <div className='text-sm text-center'>
                             <p className='font-light'>
@@ -168,8 +176,8 @@ export default async function Home({ searchParams }: Props) {
                     {data.album.map((item, index) => (
                         <div key={index} className='px-4'>
                             <div className='flex items-center justify-between pb-3'>
-                                <p className='text-gray-600 text-sm'>{item.title}</p>
-                                <p className='text-gray-600 text-sm'>{item.date}</p>
+                                <p className='text-gray-600'>{item.title}</p>
+                                <p className='text-gray-600'>{item.date}</p>
                             </div>
                             <div className='grid grid-cols-3 gap-0.5 *:aspect-square *:object-cover'>
                                 {item.images.map((image, index) => (
@@ -182,10 +190,10 @@ export default async function Home({ searchParams }: Props) {
             </div>
             <div className='border-t border-gray-300 mt-16'>
                 <h3 className='uppercase text-2xl font-light text-center py-12 text-gray-500'>Chương Trình</h3>
-                <div className='px-4 text-sm space-y-3'>
+                <div className='px-2 space-y-3'>
                     <div>
                         <p>
-                            <span className='font-medium pr-1'>📍 Địa điểm:</span>
+                            <span className='font-medium pr-1'>📍DC:</span>
                             {data.programme[keyWeddingInvitation].address}
                         </p>
                         <p>
@@ -205,37 +213,7 @@ export default async function Home({ searchParams }: Props) {
                     ))}
                 </div>
             </div>
-            <div className='border-t border-gray-300 mt-16 bg-cover bg-center bg-[url(/imgs/form.jpg)] py-6'>
-                <h3 className='uppercase text-xl text-center py-8 text-white'>Sổ Lưu Bút</h3>
-                <div>
-                    <div className='px-6 text-sm mx-4'>
-                        <form id='form' action='' className='space-y-3'>
-                            <input
-                                type='text'
-                                placeholder='Họ và tên'
-                                className='w-full outline-none bg-gray-100/50 backdrop-blur-sm py-2.5 px-2.5 rounded-lg'
-                            />
-                            <input
-                                type='text'
-                                placeholder='Số điện thoại'
-                                className='w-full outline-none bg-gray-100/50 backdrop-blur-sm py-2.5 px-2.5 rounded-lg'
-                            />
-                            <textarea
-                                rows={4}
-                                placeholder='Lời nhắn'
-                                className='resize-none w-full outline-none bg-gray-100/50 backdrop-blur-sm py-2.5 px-2.5 rounded-lg'
-                            ></textarea>
-                            <button className='w-full !py-2.5 px-5 rounded-full bg-rose-600 hover:bg-rose-600/80 transition-all cursor-pointer font-medium text-white text-sm'>
-                                Xác nhận tham gia
-                            </button>
-                        </form>
-                    </div>
-
-                    <p className='mt-6 font-light text-center text-sm py-4 text-gray-500'>
-                        💖 Cảm ơn bạn đã đến chung vui cùng chúng mình! 💖
-                    </p>
-                </div>
-            </div>
+            <Form />
         </div>
     );
 }

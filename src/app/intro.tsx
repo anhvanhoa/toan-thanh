@@ -1,8 +1,8 @@
 'use client';
-import { PauseIcon, PlayIcon } from 'lucide-react';
+import { MailIcon, PauseIcon, PlayIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 type IntroType = {
     data: {
@@ -41,6 +41,12 @@ const Intro = ({ data }: IntroType) => {
         setIsOpen(!isOpen);
     };
 
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.document.body.style.overflow = 'hidden';
+        }
+    }, []);
+
     return (
         <div>
             <div
@@ -54,16 +60,23 @@ const Intro = ({ data }: IntroType) => {
                 >
                     {data.title}
                 </h1>
-                <div className='absolute bottom-4 px-4 py-4 left-0 right-0 mx-2 rounded-2xl backdrop-blur-xl bg-white/10 text-center *:py-1'>
+                <div className='absolute bottom-4 px-4 py-4 left-0 right-0 mx-2 rounded-2xl backdrop-blur-xl bg-white/5 *:text-black text-center *:py-1'>
                     <p className='uppercase text-lg font-semibold'>{data.subtitle}</p>
                     <p className='text-2xl font-meow'>{data.date}</p>
                     <p className='font-medium'>{data.content}</p>
-                    <Link href='#form' className='p-1 inline-block mt-2 relative'>
-                        <p className='animate-ping bg-rose-600/20 rounded-full absolute inset-0'></p>
-                        <button className='!py-1.5 px-5 rounded-full bg-rose-600 transition-all cursor-pointer font-medium text-white text-sm'>
-                            Xác nhận tham gia
-                        </button>
-                    </Link>
+                    <div className='flex items-center justify-center'>
+                        <Link href='#form' className='p-1 inline-block mt-2 relative'>
+                            <p className='animate-ping bg-rose-600/20 rounded-full absolute inset-0'></p>
+                            <button className='!py-2 px-5 rounded-full bg-rose-600 transition-all cursor-pointer font-medium text-white text-sm'>
+                                Xác nhận tham gia
+                            </button>
+                        </Link>
+                        <Link href='#thiep-cuoi' className='p-1 inline-block mt-2 relative'>
+                            <button className='!py-2 px-2 rounded-full bg-pink-700/10 text-pink-700 transition-all cursor-pointer font-medium'>
+                                <MailIcon strokeWidth={1} className='size-4' />
+                            </button>
+                        </Link>
+                    </div>
                     <Image
                         width={128}
                         height={128}
