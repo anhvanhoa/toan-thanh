@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Intro from './intro';
 import Form from './form';
+import Calendar from './calendar';
 
 const data = {
     intro: {
@@ -9,7 +10,10 @@ const data = {
         date: 'Chủ Nhật, ngày 08 tháng 03 năm 2025',
         content:
             'Thật vui khi được đón tiếp bạn trong ngày cưới của chúng mình! Chúng mình rất hạnh phúc và chân thành cảm ơn bạn vì sự hiện diện cùng những lời chúc tốt đẹp.',
-        background: '/imgs/bg-1.jpg'
+        background: {
+            bride: '/imgs/bg-1.jpg',
+            groom: '/imgs/bg-2.jpg'
+        }
     },
     brideAndGroom: [
         {
@@ -36,7 +40,7 @@ const data = {
             address: 'Xóm Bắc, Xã Tân An, Huyện Thanh Hà, Hải Dương'
         },
         bride: {
-            img: '/imgs/thiep-cuoi.jpg',
+            img: '/imgs/album-3.jpg',
             title: 'Tiệc Mừng Nhà Gái',
             date: '08.03.2025',
             time: '07:30',
@@ -48,11 +52,14 @@ const data = {
             title: 'Hồi ấy dại khờ',
             date: '04 Th3, 2025',
             images: [
-                '/imgs/DSC_1980.JPG',
-                '/imgs/happy-wendding.jpg',
-                '/imgs/DSC_1980.JPG',
-                '/imgs/DSC_1980.JPG',
-                '/imgs/DSC_1980.JPG'
+                '/imgs/album-1.jpg',
+                '/imgs/album-5.jpg',
+                '/imgs/album-8.jpg',
+                '/imgs/album-4.jpg',
+                '/imgs/album-7.jpg',
+                '/imgs/album-3.jpg',
+                '/imgs/album-6.jpg',
+                '/imgs/album-2.jpg'
             ]
         }
     ],
@@ -120,7 +127,7 @@ export default async function Home({ searchParams }: Props) {
             <div className='bg-indigo-600 py-1'>
                 <p className='text-white text-center text-sm'>🎉 Trân trọng mời {ten} tham dự lễ vu quy 🎉</p>
             </div>
-            <Intro data={data.intro} />
+            <Intro data={data.intro} typeKey={keyWeddingInvitation} />
             <div>
                 <h3 className='uppercase text-2xl font-light text-center py-12 text-gray-500'>Giới thiệu</h3>
                 <div className='space-y-16'>
@@ -140,6 +147,9 @@ export default async function Home({ searchParams }: Props) {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className='mt-8'>
+                <Calendar />
             </div>
             <div id='thiep-cuoi' className='border-y border-gray-300 mt-14'>
                 <div className='space-y-8'>
@@ -175,13 +185,13 @@ export default async function Home({ searchParams }: Props) {
                 <div className='space-y-4'>
                     {data.album.map((item, index) => (
                         <div key={index} className='px-4'>
-                            <div className='flex items-center justify-between pb-3'>
+                            {/* <div className='flex items-center justify-between pb-3'>
                                 <p className='text-gray-600'>{item.title}</p>
                                 <p className='text-gray-600'>{item.date}</p>
-                            </div>
-                            <div className='grid grid-cols-3 gap-0.5 *:aspect-square *:object-cover'>
+                            </div> */}
+                            <div className='grid grid-cols-2 gap-0.5 *:aspect-[4/6] *:object-cover'>
                                 {item.images.map((image, index) => (
-                                    <Image key={index} width={160} height={160} src={image} alt='' />
+                                    <Image key={index} width={160} height={160} src={image} alt='' className='w-full' />
                                 ))}
                             </div>
                         </div>

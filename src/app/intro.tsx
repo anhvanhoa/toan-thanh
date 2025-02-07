@@ -6,15 +6,19 @@ import React, { useEffect } from 'react';
 
 type IntroType = {
     data: {
-        background: string;
+        background: {
+            bride: string;
+            groom: string;
+        };
         title: string;
         subtitle: string;
         date: string;
         content: string;
     };
+    typeKey: 'bride' | 'groom';
 };
 
-const Intro = ({ data }: IntroType) => {
+const Intro = ({ data, typeKey }: IntroType) => {
     const [isPlaying, setIsPlaying] = React.useState(false);
     const audio = React.useRef<HTMLAudioElement>(null);
     const handlePlay = React.useCallback(() => {
@@ -51,7 +55,7 @@ const Intro = ({ data }: IntroType) => {
         <div>
             <div
                 className='overflow-hidden relative min-h-96 bg-cover bg-black w-full aspect-[4/6]'
-                style={{ backgroundImage: `url(${data.background})` }}
+                style={{ backgroundImage: `url(${data.background[typeKey]})` }}
             >
                 <h1
                     className={`font-splash text-white text-center text-3xl -translate-y-[120%] -rotate-6 pt-10 ${
