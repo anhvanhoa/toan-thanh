@@ -19,7 +19,7 @@ type Props = {
     };
 };
 
-const FormCustomer = ({ type, bank, keyType }: Props) => {
+const FormCustomer = ({ type }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [state, action, isPending] = useActionState<FormState, FormData>(submitAction, {});
 
@@ -45,12 +45,12 @@ const FormCustomer = ({ type, bank, keyType }: Props) => {
         <div id='form'>
             <div className='border-t border-gray-300 mt-16 bg-cover bg-center bg-[url(/imgs/form-2.jpg)] py-6'>
                 <h3 className='uppercase text-2xl text-center py-8 text-black'>Sổ Lưu Bút</h3>
-                <div className='space-y-1 text-black'>
+                {/* <div className='space-y-1 text-black'>
                     <Image src={bank[keyType].qr} alt='QR' width={150} height={150} className='mx-auto' quality={100} />
                     <p className='text-center font-semibold'>Ngân hàng: {bank[keyType].bank}</p>
                     <p className='text-center font-semibold'>Tên Tài khoản: {bank[keyType].name}</p>
                     <p className='text-center font-semibold'>Số tài khoản: {bank[keyType].number}</p>
-                </div>
+                </div> */}
                 <div>
                     <div suppressHydrationWarning className={`px-6 text-sm mx-4`}>
                         <form action={action} className='space-y-3'>
