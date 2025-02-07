@@ -13,20 +13,18 @@ type IntroType = {
         title: string;
         subtitle: string;
         date: string;
+        lunarCalendar: string;
         content: string;
     };
     typeKey: 'bride' | 'groom';
 };
 
 const Intro = ({ data, typeKey }: IntroType) => {
+    const mp3 = typeKey === 'bride' ? '/audio/thanh.mp3' : '/audio/toan.mp3';
     const [isPlaying, setIsPlaying] = React.useState(false);
     const audio = React.useRef<HTMLAudioElement>(null);
     const handlePlay = React.useCallback(() => {
         if (!audio.current) return;
-        // nếu dưới 16s thì bắt đầu từ giây thứ 16
-        if (audio.current?.currentTime < 16) {
-            audio.current.currentTime = 16;
-        }
         audio.current?.play();
         setIsPlaying(!isPlaying);
     }, [isPlaying]);
@@ -67,6 +65,7 @@ const Intro = ({ data, typeKey }: IntroType) => {
                 <div className='absolute bottom-4 px-4 py-4 left-0 right-0 mx-2 rounded-2xl backdrop-blur-xl bg-white/5 *:text-black text-center *:py-1'>
                     <p className='uppercase text-lg font-semibold'>{data.subtitle}</p>
                     <p className='text-2xl font-meow'>{data.date}</p>
+                    <p className='text-sm'>{data.lunarCalendar}</p>
                     <p className='font-medium'>{data.content}</p>
                     <div className='flex items-center justify-center'>
                         <Link href='#form' className='p-1 inline-block mt-2 relative'>
@@ -76,7 +75,7 @@ const Intro = ({ data, typeKey }: IntroType) => {
                             </button>
                         </Link>
                         <Link href='#thiep-cuoi' className='p-1 inline-block mt-2 relative'>
-                            <button className='!py-2 px-2 rounded-full bg-pink-700/10 text-pink-700 transition-all cursor-pointer font-medium'>
+                            <button className='!p-2.5 rounded-full bg-pink-700/10 text-pink-700 transition-all cursor-pointer font-medium'>
                                 <MailIcon strokeWidth={1} className='size-4' />
                             </button>
                         </Link>
@@ -108,10 +107,10 @@ const Intro = ({ data, typeKey }: IntroType) => {
                         Mở
                     </button>
                 </div>
-                <p className='py-4 text-white'>@2025 Đỗ Toàn & Phạm Thị Thanh</p>
+                <p className='py-4 text-white'>@2025 Văn Toàn & Thanh Thanh</p>
             </div>
             <div>
-                <audio ref={audio} autoPlay className='hidden' src='/audio/nen.mp3' controls></audio>
+                <audio ref={audio} autoPlay className='hidden' src={mp3} controls></audio>
                 <button
                     onClick={isPlaying ? handlePause : handlePlay}
                     className='fixed bottom-0 right-0 p-2 m-2 border bg-white/30 rounded-full'

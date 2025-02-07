@@ -5,9 +5,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import clsx from 'clsx';
 
 export default function Calendar() {
-    const [selectedDate, setSelectedDate] = React.useState<Date>(new Date(2025, 0, 22));
-    const [focusedDate, setFocusedDate] = React.useState<Date>(new Date(2025, 0, 20));
-    const [currentMonth, setCurrentMonth] = React.useState<Date>(new Date(2025, 0, 1));
+    const [selectedDate] = React.useState<Date>(new Date());
+    const [focusedDate] = React.useState<Date>(new Date(2025, 2, 9));
+    const [currentMonth, setCurrentMonth] = React.useState<Date>(new Date(2025, 2, 1));
 
     const daysInMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
 
@@ -96,8 +96,6 @@ export default function Calendar() {
                                 isSelected && 'text-blue-700 font-semibold',
                                 isFocused && !isSelected && 'bg-rose-600 text-white rounded-full font-semibold'
                             )}
-                            onClick={() => setSelectedDate(date)}
-                            onFocus={() => setFocusedDate(date)}
                         >
                             <time dateTime={date.toISOString()}>{date.getDate()}</time>
                         </button>

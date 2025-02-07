@@ -10,8 +10,16 @@ export const metadata: Metadata = {
     robots: 'noindex, nofollow'
 };
 
-const Page = async () => {
-    const data = await getCustomers();
+type Props = {
+    searchParams: Promise<{
+        key: string;
+    }>;
+};
+
+const Page = async ({ searchParams }: Props) => {
+    const { key = 'toan' } = await searchParams;
+    console.log(key);
+    const data = await getCustomers(key);
     return (
         <div>
             <p className='text-center py-2'>Tất cả có {data.length} người tham dự</p>

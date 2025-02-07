@@ -3,7 +3,11 @@ import { FormState, submitAction } from '@/action/create-customer';
 import Image from 'next/image';
 import React, { useActionState, useEffect, useState } from 'react';
 
-const FormCustomer = () => {
+type Props = {
+    type: string;
+};
+
+const FormCustomer = ({ type }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [state, action, isPending] = useActionState<FormState, FormData>(submitAction, {});
 
@@ -32,6 +36,7 @@ const FormCustomer = () => {
                 <div>
                     <div suppressHydrationWarning className={`px-6 text-sm mx-4`}>
                         <form id='form' action={action} className='space-y-3'>
+                            <input name='type' type='hidden' value={type} />
                             <div>
                                 <input
                                     name='name'

@@ -13,8 +13,8 @@ datasource db {
 model Customers {
   id         Int      @id @default(autoincrement())
   name       String
-  email      String?  @unique
   phone      String?  @unique
+  type       String
   notes      String?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt

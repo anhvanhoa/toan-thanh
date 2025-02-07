@@ -6,7 +6,8 @@ import { z } from 'zod';
 const formSchema = z.object({
     name: z.string().min(2, 'Tên phải có ít nhất 2 ký tự'),
     phone: z.string().regex(/^\d{10,11}$/, 'Số điện thoại không hợp lệ'),
-    notes: z.string().min(10, 'Lời nhắn phải có ít nhất 10 ký tự')
+    notes: z.string().min(10, 'Lời nhắn phải có ít nhất 10 ký tự'),
+    type: z.string()
 });
 
 export type FormState = {
@@ -25,8 +26,10 @@ export const submitAction = async (_: FormState, formData: FormData) => {
         const dataCustomer: Customer = {
             name: formData.get('name') as string,
             phone: formData.get('phone') as string,
-            notes: formData.get('notes') as string
+            notes: formData.get('notes') as string,
+            type: formData.get('type') as string
         };
+        console.log(dataCustomer);
         const validatedData = formSchema.safeParse(dataCustomer);
         if (!validatedData.success) {
             return { errors: validatedData.error.flatten().fieldErrors, status: 'error' };
