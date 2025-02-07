@@ -8,6 +8,3 @@ CREATE TABLE "Customers" (
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" DATETIME NOT NULL
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "Customers_phone_key" ON "Customers"("phone");
