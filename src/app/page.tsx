@@ -209,7 +209,7 @@ export default async function Home({ searchParams }: Props) {
                 <h3 className='uppercase text-2xl font-light text-center py-9 text-gray-500'>Album</h3>
                 <div className='space-y-4'>
                     {data.album.map((item, index) => (
-                        <div key={index} className='px-4'>
+                        <div key={index} className='px-2'>
                             {/* <div className='flex items-center justify-between pb-3'>
                                 <p className='text-gray-600'>{item.title}</p>
                                 <p className='text-gray-600'>{item.date}</p>

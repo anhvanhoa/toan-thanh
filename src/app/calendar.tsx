@@ -92,7 +92,7 @@ export default function Calendar() {
                             key={index}
                             className={clsx(
                                 'h-8 w-full p-0 font-normal aria-selected:opacity-100',
-                                isCurrentMonth ? 'text-black' : 'text-gray-400',
+                                isCurrentMonth ? '' : 'text-gray-400',
                                 isSelected && 'text-blue-700 font-semibold',
                                 isFocused && !isSelected && 'bg-rose-600 text-white rounded-full font-semibold'
                             )}
