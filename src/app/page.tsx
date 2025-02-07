@@ -100,7 +100,7 @@ const data = {
                 ]
             },
             {
-                title: '4️⃣Giao lưu Kết thúc & cảm ơn (20:30 - 21:00)',
+                title: '4️⃣Giao lưu Kết thúc & cảm ơn',
                 content: [
                     '🎤Cô dâu - chú rể gửi lời cảm ơn.',
                     '🎁Trao quà lưu niệm cho khách mời.',
