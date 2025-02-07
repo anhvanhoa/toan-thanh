@@ -18,7 +18,6 @@ type Props = {
 
 const Page = async ({ searchParams }: Props) => {
     const { key = 'toan' } = await searchParams;
-    console.log(key);
     const data = await getCustomers(key);
     return (
         <div>
