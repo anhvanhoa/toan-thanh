@@ -45,7 +45,7 @@ const FormCustomer = ({ type, bank, keyType }: Props) => {
         <div>
             <div className='border-t border-gray-300 mt-16 bg-cover bg-center bg-[url(/imgs/form-2.jpg)] py-6'>
                 <h3 className='uppercase text-2xl text-center py-8 text-black'>Sổ Lưu Bút</h3>
-                <div className='space-y-1'>
+                <div className='space-y-1 text-black'>
                     <Image src={bank[keyType].qr} alt='QR' width={150} height={150} className='mx-auto' quality={100} />
                     <p className='text-center font-semibold'>Ngân hàng: {bank[keyType].bank}</p>
                     <p className='text-center font-semibold'>Tên Tài khoản: {bank[keyType].name}</p>
