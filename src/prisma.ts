@@ -11,12 +11,17 @@ export type Customer = {
 
 export const createCustomer = async (data: Customer) => {
     return await prisma.customers.create({
-        data: data,
+        data: data
     });
 };
 
 export const getCustomers = async () => {
-    return await prisma.customers.findMany();
+    // Tìm và sắp xếp DESC theo ngày tạo
+    return await prisma.customers.findMany({
+        orderBy: {
+            created_at: 'desc'
+        }
+    });
 };
 
 export default prisma;
