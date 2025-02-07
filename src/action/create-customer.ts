@@ -29,7 +29,6 @@ export const submitAction = async (_: FormState, formData: FormData) => {
             notes: formData.get('notes') as string,
             type: formData.get('type') as string
         };
-        console.log(dataCustomer);
         const validatedData = formSchema.safeParse(dataCustomer);
         if (!validatedData.success) {
             return { errors: validatedData.error.flatten().fieldErrors, status: 'error' };
