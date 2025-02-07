@@ -134,13 +134,14 @@ type Props = {
 
 export default async function Home({ searchParams }: Props) {
     let keyWeddingInvitation: 'groom' | 'bride' = 'groom';
-    const { key = 'toan', ten = 'Nguyễn Văn Ánh' } = await searchParams;
+    const { key = 'toan', ten = 'Nguyễn_Văn_Ánh' } = await searchParams;
     if (key === 'toan') keyWeddingInvitation = 'groom';
     if (key === 'thanh') keyWeddingInvitation = 'bride';
+    const tenFormat = ten.replace(/_/g, ' ');
     return (
         <div>
             <div className='bg-indigo-600 py-1'>
-                <p className='text-white text-center'>🎉 Trân trọng mời {ten} tham dự lễ vu quy 🎉</p>
+                <p className='text-white text-center'>🎉 Trân trọng mời {tenFormat} tham dự lễ vu quy 🎉</p>
             </div>
             <Intro data={data.intro} typeKey={keyWeddingInvitation} />
             <div>
@@ -188,7 +189,7 @@ export default async function Home({ searchParams }: Props) {
                             {data.weddingInvitation[keyWeddingInvitation].title}
                         </p>
                         <p className='text-center px-2 font-meow text-xl'>
-                            Trân trọng kính mời {ten} đến dự tiệc thân mật cùng gia đình chúng tôi !
+                            Trân trọng kính mời {tenFormat} đến dự tiệc thân mật cùng gia đình chúng tôi !
                         </p>
                         <div className='text-sm text-center'>
                             <p className='font-light'>
