@@ -42,7 +42,7 @@ const FormCustomer = ({ type, bank, keyType }: Props) => {
         }
     }, [state.message, state.status]);
     return (
-        <div>
+        <div id='form'>
             <div className='border-t border-gray-300 mt-16 bg-cover bg-center bg-[url(/imgs/form-2.jpg)] py-6'>
                 <h3 className='uppercase text-2xl text-center py-8 text-black'>Sổ Lưu Bút</h3>
                 <div className='space-y-1 text-black'>
@@ -53,7 +53,7 @@ const FormCustomer = ({ type, bank, keyType }: Props) => {
                 </div>
                 <div>
                     <div suppressHydrationWarning className={`px-6 text-sm mx-4`}>
-                        <form id='form' action={action} className='space-y-3'>
+                        <form action={action} className='space-y-3'>
                             <input name='type' type='hidden' value={type} />
                             <div>
                                 <input
