@@ -108,6 +108,20 @@ const data = {
                 ]
             }
         ]
+    },
+    bank: {
+        bride: {
+            name: 'PHAM THI THANH',
+            number: '3126 0520 04',
+            bank: 'Techcombank',
+            qr: '/imgs/qr-thanh.png'
+        },
+        groom: {
+            name: 'DO VAN TOAN',
+            number: '3108 2048 8888',
+            bank: 'Techcombank',
+            qr: '/imgs/qr-toan.png'
+        }
     }
 };
 
@@ -227,7 +241,7 @@ export default async function Home({ searchParams }: Props) {
                     ))}
                 </div>
             </div>
-            <Form type={key} />
+            <Form type={key} bank={data.bank} keyType={keyWeddingInvitation} />
         </div>
     );
 }
