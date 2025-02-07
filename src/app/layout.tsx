@@ -45,7 +45,7 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <body
-                className={`${greyQoSna.variable} ${lobster.variable} ${splash.variable} ${badScript.variable} ${darkerGrotesque.className}`}
+                className={`${greyQoSna.variable} ${lobster.variable} ${splash.variable} ${badScript.variable} ${darkerGrotesque.className} bg-white text-black`}
             >
                 {children}
             </body>
